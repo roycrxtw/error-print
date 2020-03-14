@@ -3,7 +3,7 @@
 This is a test result about the Error stack trace messages for different node.js 
 versions.
 
-For changing the node.js version easily, the `nvm` is a necessary tool.
+For changing the node.js version easily, please use the handy tool: `nvm`.
 
 
 ## v13.11.0
