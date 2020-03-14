@@ -1,5 +1,7 @@
 'use strict';
 
+const pinoTest = require('./pino-test');
+
 const nodeVersion = process.version;
 console.log('Current node.js version:', nodeVersion);
 
@@ -11,4 +13,26 @@ const STACKTRACE_OFFSET = NODEJS_VERSION && NODEJS_VERSION > 6 ? 2 : 3
 const LINE_OFFSET = 7
 const caller = Error().stack.split('\n').filter(s => !s.includes('node_modules/pino') && !s.includes('node_modules\\pino'))[STACKTRACE_OFFSET].substr(LINE_OFFSET);
 
+console.log(Error());
+console.log(Error().stack);
+
 console.log(`caller:`, caller);
+
+pinoTest.start();
+
+'use strict';
+
+const pino = require('pino')();
+const pinoCaller = require('pino-caller')(pino);
+
+start();
+
+function start() {
+  log();
+}
+  
+function log() {
+  pinoCaller.info('Test for caller in index.js');
+};
+
+
